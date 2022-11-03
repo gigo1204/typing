@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="to_do_text">sample</div>
+    <input type="text" value=""  id="userinput" onkeyup="checkInput()">
+    <div id="status_text"></div>
+    <script>
+        var idx = -1;
+        var list=["삶이 있는 한 희망은 있다","산다는 것 그것은 치열한 전투이다.","하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다. ","언제나 현재에 집중할수 있다면 행복할것이다","진정으로 웃으려면 고통을 참아야하며 , 나아가 고통을 즐길 줄 알아야 해","직업에서 행복을 찾아라. 아니면 행복이 무엇인지 절대 모를 것이다"];
+   
+        function show_next_sentense(){
+            idx++;
+            document.getElementById("to_do_text").innerText = list[idx];
+        }
+
+
+        function checkInput() {
+            var a=document.getElementById("userinput").value;
+            //alert(a + "\r\n" + list[idx]);
+            //alert(a.length + " " + list[idx].length);
+            //alert(" : " + list[idx] == a );            
+            //alert(" : " + list[idx] < a );            
+            //alert(" : " + list[idx] > a ); 
+            var status = "";
+            function isSameText(str1, str2){
+                var isSame = str1.length == str2.length;
+                if (! isSame) 
+                    return false;
+
+                for (i = 0; i<str1.length; i++) {
+                    if (str1[i] != str2[i]) {
+                        isSame = false;
+                    }
+                }  
+                return isSame;      
+            }
+
+
+            document.getElementById("status_text").innerText = status;       
+            if (isSameText(a, list[idx])){
+                // success
+               
+                show_next_sentense();
+            }
+
+
+
+        }
+        show_next_sentense();
+        
+    </script>
+</body>
+</html>
